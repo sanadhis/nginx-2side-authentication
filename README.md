@@ -2,6 +2,7 @@
 * Install docker.
 * Install docker-compose.
 * Familiarity with nginx.
+* Openssl installed.
 
 ## Bringing the cluster up
 ```bash
