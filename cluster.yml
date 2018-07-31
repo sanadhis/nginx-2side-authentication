@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  server1:
+    image: nginx
+    volumes:
+      - "./server1/:/var/www/html/"
+      - "./conf/server.conf:/etc/nginx/conf.d/default.conf:ro"
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_PORT=80
+
+  server2:
+    image: nginx
+    volumes:
+      - "./server2/:/var/www/html/"
+      - "./conf/server.conf:/etc/nginx/conf.d/default.conf:ro"
+    ports:
+      - "8081:80"
+    environment:
+      - NGINX_PORT=80
+
+  server3:
+    image: nginx
+    volumes:
+      - "./server3/:/var/www/html/"
+      - "./conf/server.conf:/etc/nginx/conf.d/default.conf:ro"
+    ports:
+      - "8082:80"
+    environment:
+      - NGINX_PORT=80
