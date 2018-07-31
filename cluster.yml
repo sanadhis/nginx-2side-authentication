@@ -10,6 +10,8 @@ services:
       - "8080:80"
     environment:
       - NGINX_PORT=80
+    networks:
+      - cluster_net
 
   server2:
     image: nginx
@@ -20,6 +22,8 @@ services:
       - "8081:80"
     environment:
       - NGINX_PORT=80
+    networks:
+      - cluster_net
 
   server3:
     image: nginx
@@ -30,3 +34,19 @@ services:
       - "8082:80"
     environment:
       - NGINX_PORT=80
+    networks:
+      - cluster_net
+    
+  proxy:
+    image: nginx
+    volumes:
+      - "./conf/proxy.conf:/etc/nginx/conf.d/default.conf:ro"
+    ports:
+      - "3000:80"
+    environment:
+      - NGINX_PORT=80
+    networks:
+      - cluster_net
+
+networks:
+  cluster_net:
